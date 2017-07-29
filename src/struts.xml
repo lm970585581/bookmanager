@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+		<action name="login1" class="smn.action.LoginAction">
+			<result name="admin">/index/admin.jsp</result>
+			<result name="student">/index/student.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input">/login/login.jsp</result>
+		</action>
+
+		<action name="LendAction" class="smn.action.LendAction">
+			<result name="success">/lend/lend.jsp</result>
+		</action>
+		<action name="book" class="smn.action.BookAction">
+			<result name="success">/bookmanager/bookmanage.jsp</result>
+			<result name="input">/bookmanager/bookmanage.jsp</result>
+			<interceptor-ref name="defaultStack">
+				<param name="validation.excludeMethods">*</param>
+				<param name="validation.includeMethods">addBook,updateBook</param>
+			</interceptor-ref>
+		</action>
+		<action name="getImage" class="smn.action.BookAction" method="getImage">
+			<interceptor-ref name="defaultStack">
+				<param name="validation.excludeMethods">*</param>
+				<param name="validation.includeMethods">addBook,updateBook</param>
+			</interceptor-ref>
+		</action>
+	</package>
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<constant name="struts.devMode" value="true"></constant>
+</struts>    
